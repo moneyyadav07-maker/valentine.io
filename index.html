@@ -12,78 +12,34 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #ffe4e1; /* Light Pink Background like screenshots */
+            background: #ffe4e1;
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
             text-align: center;
         }
-        .container {
-            width: 90%;
-            max-width: 400px;
-            z-index: 10;
-        }
-        .gif-container {
-            width: 100%;
-            height: 250px;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .gif-container img {
-            max-height: 100%;
-            border-radius: 15px;
-        }
-        h1 {
-            font-size: 1.8rem;
-            color: #000;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        p {
-            font-size: 1.1rem;
-            color: #444;
-            margin-bottom: 30px;
-        }
-        .btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            position: relative;
-        }
-        button {
-            padding: 10px 30px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .yes-btn { background: #fff; color: #000; }
-        .no-btn { background: #fff; color: #000; }
-        
-        /* Floating Hearts */
-        .heart {
-            position: fixed;
-            color: #ff4d6d;
-            font-size: 20px;
-            animation: fall 3s linear forwards;
-        }
-        @keyframes fall {
-            to { transform: translateY(110vh); opacity: 0; }
-        }
+        .container { width: 90%; max-width: 400px; }
+        .gif-container { width: 100%; height: 250px; margin-bottom: 20px; display: flex; justify-content: center; }
+        .gif-container img { max-height: 100%; border-radius: 15px; }
+        h1 { font-size: 1.8rem; color: #000; margin-bottom: 10px; font-weight: 700; }
+        p { font-size: 1.1rem; color: #444; margin-bottom: 30px; }
+        .btns { display: flex; justify-content: center; gap: 20px; position: relative; }
+        button { padding: 10px 30px; font-size: 1.1rem; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .yes-btn { background: #fff; color: #000; transition: 0.3s; }
+        .no-btn { background: #fff; color: #000; transition: 0.1s; }
+        .heart { position: fixed; color: #ff4d6d; font-size: 20px; animation: fall 3s linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh); opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <div class="container" id="content">
+    <div class="container">
         <div class="gif-container">
-            <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpndW16amI5am56amZ6amZ6amZ6amZ6amZ6amZ6amZ6amZ6amZ6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNUMo/giphy.gif">
+            <img id="mainGif" src="https://media.tenor.com/7b7X8q-44WAAAAAi/peach-goma.gif">
         </div>
-        <h1 id="question">Will you be my Valentine? 🤗</h1>
+        <h1 id="question">DO you love me? 🤗</h1>
         <p id="subtext">Babu, ha bolo naaa...</p>
         <div class="btns" id="btnContainer">
-            <button class="yes-btn" onclick="celebrate()">Yes</button>
+            <button class="yes-btn" id="yesBtn" onclick="celebrate()">Yes</button>
             <button class="no-btn" id="noBtn" onclick="nextStage()">No</button>
         </div>
     </div>
@@ -94,21 +50,21 @@
         const question = document.getElementById('question');
         const subtext = document.getElementById('subtext');
         const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
 
-        // Stages logic based on your screenshots
         const stages = [
             {
-                gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmhtM3J6ZzF6bmZ6amZ6amZ6amZ6amZ6amZ6amZ6amZ6amZ6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/vO8F4fYQ8DXZtgr9pY/giphy.gif",
+                gif: "https://media.tenor.com/f1XUAn99WicAAAAAi/goma-goma-peach.gif",
                 q: "Soch le achhe se! 🙄",
                 s: "itti jldi nhi mat bol🙄"
             },
             {
-                gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExemRmcHh0Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/OPU6wUKARA3NTTCdVm/giphy.gif",
+                gif: "https://media.tenor.com/zM_S8VvSYm4AAAAAi/peach-goma.gif",
                 q: "Ek aur baar Soch lo! 😫",
                 s: "kyu aisa kr rahi hai 😫"
             },
             {
-                gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXN6ZzF6bmZ6amZ6amZ6amZ6amZ6amZ6amZ6amZ6amZ6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3og0IPXWp2fVvWnEB2/giphy.gif",
+                gif: "https://media.tenor.com/0v_K6v8_280AAAAAi/peach-goma.gif",
                 q: "Manja na! Kitna bhav khaegi 😭",
                 s: "bht glt baat hai 😭"
             }
@@ -119,9 +75,13 @@
                 mainGif.src = stages[stage].gif;
                 question.innerText = stages[stage].q;
                 subtext.innerText = stages[stage].s;
+                // Yes button size increase
+                let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+                yesBtn.style.fontSize = (currentSize + 10) + "px";
+                yesBtn.style.padding = (currentSize + 5) + "px " + (currentSize + 20) + "px";
                 stage++;
             } else {
-                // Final "Toxic" Stage: Button starts running
+                // Final Toxic Stage: No button starts running
                 question.innerText = "Ab toh option hi nahi hai! 😈";
                 subtext.innerText = "Sirf YES dabana padega!";
                 noBtn.onmouseover = moveBtn;
@@ -138,12 +98,10 @@
         }
 
         function celebrate() {
-            mainGif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXA0YmF4bm96Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l41lH4ADRtAYnGsLe/giphy.gif";
+            mainGif.src = "https://media.tenor.com/XG_6PeyE8qEAAAAAi/peach-and-goma-love.gif";
             question.innerText = "Hehehehe, I knew it! 😘";
             subtext.innerText = "I LOVE YOU SM... ❤️";
             document.getElementById('btnContainer').style.display = 'none';
-            
-            // Heart Rain
             setInterval(createHeart, 150);
         }
 
